@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ZP_Light_bot Menu</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1c1c1d;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .channel-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #f39c12;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        /* Сетка для кнопок */
+        .menu-grid {
+            width: 100%;
+            max-width: 350px;
+            display: grid;
+            /* Два равных столбца */
+            grid-template-columns: 1fr 1fr; 
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 5px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            background: #2c2c2e;
+            text-align: center;
+        }
+
+        /* Растягиваем нижнюю кнопку на всю ширину сетки (на две колонки) */
+        .btn-full {
+            grid-column: span 2;
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+            background: #3a3a3c;
+        }
+
+        .footer {
+            margin-top: auto;
+            font-size: 11px;
+            color: #444;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="channel-name">ZP_Light_bot</div>
+    <div class="subtitle">Інформація про світло в Запоріжжі</div>
+
+    <div class="menu-grid">
+        <a href="https://www.zoe.com.ua/outage/" class="btn">
+            Графіки 💡
+        </a>
+
+        <a href="https://script.google.com/macros/s/AKfycbzkN3KDDReQuxcjAHdkIpVoVwF2RKCSUnWlcwSPbipfMnxNWYuLF-BtZv2oHxk5FG_V/exec" class="btn">
+            Моя черга ⚡️
+        </a>
+
+        <a href="https://neptun.in.ua/" class="btn btn-full">
+            Карта тривог 🚨
+        </a>
+    </div>
+
+    <div class="footer">ZP_Light_bot © 2024</div>
+
+</body>
+</html>
