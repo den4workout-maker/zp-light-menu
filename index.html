@@ -1,78 +1,129 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaporizhzhia Light Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ZP_Light_bot Menu</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #1c1c1c;
-            color: white;
+            background-color: #1c1c1d;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            margin: 0;
+            justify-content: flex-start;
             min-height: 100vh;
-        }
-        h2 { margin-bottom: 25px; font-weight: bold; color: #f39c12; }
-        .description { font-size: 14px; color: #aaa; margin-bottom: 20px; text-align: center; }
-        .button {
-            width: 100%;
-            max-width: 320px;
-            padding: 18px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 15px;
-            background-color: #2c2c2e;
-            color: white;
-            font-size: 17px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            transition: all 0.2s;
-            border: 1px solid #3a3a3c;
+            margin: 0;
+            padding: 20px;
             box-sizing: border-box;
         }
-        .button:active { transform: scale(0.98); background-color: #3a3a3c; }
-        .primary { background-color: #f39c12; color: black; border: none; }
-        .footer { margin-top: auto; font-size: 12px; color: #555; padding: 20px 0; }
+
+        .channel-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #f39c12;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .menu-grid {
+            width: 100%;
+            max-width: 350px;
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 5px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            background: #2c2c2e;
+            text-align: center;
+        }
+
+        .btn-full {
+            grid-column: span 2;
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+            background: #3a3a3c;
+        }
+
+        .footer {
+            margin-top: auto;
+            font-size: 11px;
+            color: #444;
+            padding: 20px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
-    <h2>Свет Запорожье 💡</h2>
-    <p class="description">Информация про отключения в одном месте</p>
+    <div class="channel-name">ZP_Light_bot</div>
+    <div class="subtitle">Інформація про світло в Запоріжжі</div>
 
-    <a href="https://script.google.com/macros/s/AKfycbzkN3KDDReQuxcjAHdkIpVoVwF2RKCSUnWlcwSPbipfMnxNWYuLF-BtZv2oHxk5FG_V/exec" class="button primary">📊 Быстрый график (Google)</a>
-    
-    <a href="https://www.zoe.com.ua/pogodinnі-grafіki-prizupinennya-elektropostachannya/" class="button">🌐 Официальный сайт ZOE</a>
-    
-    <a href="https://map.ukrainealarm.com/" class="button">🚨 Карта тревог</a>
+    <div class="menu-grid">
+        <a href="https://www.zoe.com.ua/outage/" class="btn">
+            Графіки 💡
+        </a>
 
-    <div class="footer">обновляется автоматически</div>
+        <a href="https://script.google.com/macros/s/AKfycbzkN3KDDReQuxcjAHdkIpVoVwF2RKCSUnWlcwSPbipfMnxNWYuLF-BtZv2oHxk5FG_V/exec" class="btn">
+            Моя черга ⚡️
+        </a>
+
+        <a href="https://neptun.in.ua/" class="btn btn-full">
+            Карта тривог 🚨
+        </a>
+    </div>
+
+    <div class="footer">ZP_Light_bot © 2024</div>
 
     <script>
-        // Инициализация WebApp
         const tg = window.Telegram.WebApp;
-        tg.expand(); // Развернуть окно на максимум
+        
+        // Разворачиваем приложение на весь экран
+        tg.expand();
 
-        // Логика кнопки "Назад"
-        // Она появится автоматически, если в истории браузера появится новая страница
-        if (window.history.length > 1) {
-            tg.BackButton.show();
-        }
-
-        tg.BackButton.onClick(function() {
-            window.history.back();
-            // Скрываем кнопку, если вернулись на главную
-            if (window.history.length <= 1) {
+        // Настройка кнопки Назад
+        // Она будет показываться только если есть история переходов
+        const handleBackButton = () => {
+            if (window.history.length > 1) {
+                tg.BackButton.show();
+            } else {
                 tg.BackButton.hide();
             }
+        };
+
+        tg.BackButton.onClick(() => {
+            window.history.back();
         });
+
+        // Следим за изменениями истории, чтобы скрывать/показывать кнопку
+        window.addEventListener('popstate', handleBackButton);
+        
+        // Проверяем при загрузке (на случай рефреша внутри)
+        handleBackButton();
     </script>
 </body>
 </html>
