@@ -33,7 +33,7 @@
         .subtitle {
             font-size: 14px;
             color: #888;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .menu-grid {
@@ -56,23 +56,59 @@
             transition: all 0.2s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
-            background: #2c2c2e;
+            background: #2c2c2e; /* Стандартна заливка */
             text-align: center;
+            box-sizing: border-box;
         }
 
         .btn-full {
             grid-column: span 2;
         }
 
-        .btn:active {
-            transform: scale(0.96);
+        /* Акцент для головної кнопки SVITLO */
+        .btn-top {
             background: #3a3a3c;
+            border: 1px solid rgba(243, 156, 18, 0.4);
+            font-size: 17px;
+            color: #f39c12;
+        }
+
+        /* Кнопка з червоним контуром (Карта тривог) */
+        .btn-danger {
+            border: 2px solid #e74c3c; /* Червоний контур */
+            color: #e74c3c; /* Червоний текст */
+            background: #2c2c2e; /* Повернув стандартний темний фон */
+        }
+
+        .btn-danger:active {
+            background: #3a3a3c; /* Темна заливка при натисканні */
+            transform: scale(0.96);
+        }
+
+        .bottom-section {
+            margin-top: auto;
+            width: 100%;
+            max-width: 350px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            padding-top: 30px;
+        }
+
+        .btn-social {
+            background: #242426;
+            font-size: 20px;
+            padding: 12px 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn:active:not(.btn-danger) {
+            transform: scale(0.96);
+            background: #48484a;
         }
 
         .footer {
-            margin-top: auto;
             font-size: 11px;
-            /* Приглушенный желтый цвет */
             color: rgba(243, 156, 18, 0.6); 
             padding: 20px 0;
             text-align: center;
@@ -85,17 +121,18 @@
     <div class="subtitle">Інформація про світло в Запоріжжі</div>
 
     <div class="menu-grid">
-        <a href="https://www.zoe.com.ua/outage/" class="btn">
-            Графіки 💡
-        </a>
+        <a href="https://svitlo.zp.ua" class="btn btn-full btn-top">SVITLO ⚡</a>
 
-        <a href="https://script.google.com/macros/s/AKfycbzkN3KDDReQuxcjAHdkIpVoVwF2RKCSUnWlcwSPbipfMnxNWYuLF-BtZv2oHxk5FG_V/exec" class="btn">
-            Моя черга ⚡️
-        </a>
+        <a href="https://www.zoe.com.ua/outage/" class="btn">Графіки 💡</a>
+        <a href="https://script.google.com/macros/s/AKfycbzkN3KDDReQuxcjAHdkIpVoVwF2RKCSUnWlcwSPbipfMnxNWYuLF-BtZv2oHxk5FG_V/exec" class="btn">Моя черга</a>
+        
+        <a href="https://neptun.in.ua/" class="btn btn-full btn-danger">Карта тривог 🚨</a>
+    </div>
 
-        <a href="https://neptun.in.ua/" class="btn btn-full">
-            Карта тривог 🚨
-        </a>
+    <div class="bottom-section">
+        <a href="https://t.me/share/url?url=https://t.me/my_zp_light_bot&text=Актуальні графіки світла в Запоріжжі 💡" class="btn btn-social">📠</a>
+        <a href="https://t.me/Den4ykk" class="btn btn-social">✍️</a>
+        <a href="https://send.monobank.ua/jar/4Dhp8KVP2L" class="btn btn-social">💰</a>
     </div>
 
     <div class="footer">ZP_Light_bot by Den4ykk © 2026</div>
